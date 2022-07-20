@@ -1,13 +1,16 @@
 <?php get_header(); ?>
-
-<div class="main">
-  <div class="container">
-
-    <h1>Not Found</h1>
+<main>
+  <section class="pageSide">
+      <main class="headerContainer">
+    <?php get_sidebar(); ?>
+  </main>
+  </section>
+  <section class="pageMain">
+       <h1>Not Found</h1>
     <p>Apologies, but the page you requested could not be found. Perhaps searching will help.</p>
-    <?php get_search_form(); ?>
+  </section>
+</main>
 
-  </div> <!-- /.container -->
-</div> <!-- /.main -->
+
 
 <?php get_footer(); ?>

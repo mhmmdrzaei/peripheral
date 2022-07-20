@@ -22,7 +22,9 @@ function theme_setup() {
 	* You can allow clients to create multiple menus by
   * adding additional menus to the array. */
 	register_nav_menus( array(
-		'primary' => 'Primary Navigation'
+		'primary' => 'Primary Navigation',
+		'footer' => 'Footer Navigation',
+		'commerce' => 'Commerce Menu'
 	) );
 
 	/*
@@ -45,7 +47,10 @@ of writing our own link tags in the header. */
 function project_styles(){
 	wp_enqueue_style('style', get_stylesheet_uri() );
 
-	wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+	wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
+
+	wp_enqueue_style('googlefont', 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,500;1,600;1,700&display=swap');
+
 }
 
 add_action( 'wp_enqueue_scripts', 'project_styles');
@@ -57,9 +62,26 @@ function project_scripts() {
 
 	//Don't use WordPress' local copy of jquery, load our own version from a CDN instead
 	wp_deregister_script('jquery');
-  wp_enqueue_script(
+wp_enqueue_script(
   	'jquery',
   	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js",
+  	false, //dependencies
+  	null, //version number
+  	true //load in footer
+  );
+
+
+  wp_enqueue_script(
+  	'googleMaps',
+  	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://maps.googleapis.com/maps/api/js?key=AIzaSyDo1P0E6Ef5SbffIx7ZzEGYjj-pNKGuHJY",
+  	false, //dependencies
+  	null, //version number
+  	true //load in footer
+  );
+
+  wp_enqueue_script(
+  	'smoothscroll',
+  	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.5.2/smooth-scrollbar.js",
   	false, //dependencies
   	null, //version number
   	true //load in footer
@@ -80,10 +102,46 @@ function project_scripts() {
     null, // version number
     true //load in footer
   );
+
+
+
 }
+add_action( 'woocommerce_after_shop_loop_item', 'woo_show_excerpt_shop_page', 19 );
+function woo_show_excerpt_shop_page() {
+	global $product;
 
-add_action( 'wp_enqueue_scripts', 'project_scripts');
+	echo $product->post->post_content;
+}
+// google maps api
+function my_acf_init() {
+    acf_update_setting('google_api_key', 'AIzaSyDo1P0E6Ef5SbffIx7ZzEGYjj-pNKGuHJY');
+}
+add_action('acf/init', 'my_acf_init');
 
+//custom categories
+
+function wp_list_categories_for_post_type($post_type, $args = '') {
+    $exclude = array();
+
+    // Check ALL categories for posts of given post type
+    foreach (get_categories() as $category) {
+        $posts = get_posts(array('post_type' => $post_type, 'category' => $category->cat_ID));
+
+        // If no posts found, ...
+        if (empty($posts))
+            // ...add category to exclude list
+            $exclude[] = $category->cat_ID;
+    }
+
+    // Set up args
+    if (! empty($exclude)) {
+        $args .= ('' === $args) ? '' : '&';
+        $args .= 'exclude='.implode(',', $exclude);
+    }
+
+    // List categories
+    wp_list_categories($args);
+}
 
 /* Custom Title Tags */
 
@@ -126,7 +184,7 @@ add_filter( 'wp_page_menu_args', 'project_page_menu_args' );
  * Sets the post excerpt length to 40 characters.
  */
 function project_excerpt_length( $length ) {
-	return 40;
+	return 100;
 }
 add_filter( 'excerpt_length', 'project_excerpt_length' );
 
@@ -259,6 +317,22 @@ function pre_r($obj) {
 	print_r($obj);
 	echo "</pre>";
 }
+
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Footer General Information',
+		'menu_title'	=> 'General Information',
+		'menu_slug' 	=> 'theme-general-settings',
+		'capability'	=> 'edit_posts',
+		'icon_url' => 'dashicons-email-alt2',
+		'position' => 7,
+		'redirect'		=> false
+	));
+	
+	
+}
+
 
 /* is_blog() - checks various conditionals to figure out if you are currently within a blog page */
 function is_blog () {

@@ -1,12 +1,12 @@
   <?php get_header();  ?>
+
 <main>
+
   <section class="pageSide">
       <main class="headerContainer">
     <?php get_sidebar(); ?>
-
   </main>
   </section>
-
   <section class="pageMain">
     <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 

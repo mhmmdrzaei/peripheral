@@ -1,7 +1,27 @@
 <footer>
-  <div class="container">
-    <p>&copy; Project Name <?php echo date('Y'); ?></p>
-  </div>
+<main class="footerContainer">
+  
+  <section class="social_media_links" aria-label="Social Medial Links">
+    <?php if( have_rows('social_media_links' , 'options') ): ?>
+        <ul class="linksEach">
+        <?php while( have_rows('social_media_links', 'options') ): the_row(); 
+            ?>
+            <li>
+              <a href="<?php the_sub_field('social_link', 'options') ;?>" target="_blank"><?php the_sub_field('social_label_icon' , 'options') ;?></a>
+            </li>
+        <?php endwhile; ?>
+        </ul>
+    <?php endif; ?>
+  </section>
+  <nav class="footerMen">
+    <p>&copy; Peripheral Review <?php echo date('Y'); ?></p>
+    <?php wp_nav_menu( array(
+      'container' => false,
+      'theme_location' => 'footer'
+    )); ?>
+  </nav>
+</main>
+    
 </footer>
 
 <script>
