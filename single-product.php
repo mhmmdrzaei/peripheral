@@ -15,20 +15,20 @@
           'theme_location' => 'commerce'
         )); ?>
       </nav>
-       <figure>
-         <?php  the_post_thumbnail('large');?>
-       </figure>
-       <section class="postcontent">
-         <section class="postContentDetails">
-          <h3 class="entry-title"><?php the_title(); ?></h3>
 
-         </section>
-         <section class="postContentText">
-           <?php the_content(); ?>
+       <section class="productContent">
+        <section class="productImages">
+
+        </section>
+         <section class="productContentDetails">
+          <h2 class="entry-title"><?php the_title(); ?></h2>
+
+          <section class="productDesc">
+            <?php the_content(); ?>
+          </section>
          </section>
        </section>
      </section>
-  </section>
 </main>
  <?php endwhile; // end of the loop. ?>
 

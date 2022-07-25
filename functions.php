@@ -51,6 +51,7 @@ function project_styles(){
 
 	wp_enqueue_style('googlefont', 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,500;1,600;1,700&display=swap');
 
+
 }
 
 add_action( 'wp_enqueue_scripts', 'project_styles');
@@ -81,11 +82,25 @@ wp_enqueue_script(
 
   wp_enqueue_script(
   	'smoothscroll',
-  	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.5.2/smooth-scrollbar.js",
+  	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.5.2/smooth-scrollbar.js",
   	false, //dependencies
   	null, //version number
   	true //load in footer
   );
+  // wp_enqueue_script(
+  // 	'gsap',
+  // 	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://unpkg.com/gsap@3/dist/gsap.min.js",
+  // 	false, //dependencies
+  // 	null, //version number
+  // 	true //load in footer
+  // );
+  // wp_enqueue_script(
+  // 	'scrollTrigger',
+  // 	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://unpkg.com/gsap@3/dist/ScrollTrigger.min.js",
+  // 	false, //dependencies
+  // 	null, //version number
+  // 	true //load in footer
+  // );
 
   wp_enqueue_script(
     'plugins', //handle
@@ -104,14 +119,18 @@ wp_enqueue_script(
   );
 
 
-
 }
+
+add_action( 'wp_enqueue_scripts', 'project_scripts');
+
 add_action( 'woocommerce_after_shop_loop_item', 'woo_show_excerpt_shop_page', 19 );
 function woo_show_excerpt_shop_page() {
 	global $product;
 
-	echo $product->post->post_content;
+	
 }
+add_filter('add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment');
+
 // google maps api
 function my_acf_init() {
     acf_update_setting('google_api_key', 'AIzaSyDo1P0E6Ef5SbffIx7ZzEGYjj-pNKGuHJY');
@@ -178,6 +197,41 @@ function project_page_menu_args( $args ) {
 	return $args;
 }
 add_filter( 'wp_page_menu_args', 'project_page_menu_args' );
+
+/**
+ * Remove WooCommerce product and WordPress page results from the search form widget
+ *
+ * @author   Golden Oak Web Design <info@goldenoakwebdesign.com>
+ * @author   Joshua David Nelson <josh@joshuadnelson.com>
+ * @license  https://www.gnu.org/licenses/gpl-2.0.html GPLv2+
+ */
+function golden_oak_web_design_modify_search_query( $query ) {
+  // Make sure this isn't the admin or is the main query
+  if( is_admin() || ! $query->is_main_query() ) {
+    return;
+  }
+
+  // Make sure this isn't the WooCommerce product search form
+  if( isset($_GET['post_type']) && ($_GET['post_type'] == 'product') ) {
+    return;
+  }
+
+  if( $query->is_search() ) {
+    $in_search_post_types = get_post_types( array( 'exclude_from_search' => false ) );
+
+    // The post types you're removing (example: 'product' and 'page')
+    $post_types_to_remove = array( 'product', 'page' );
+
+    foreach( $post_types_to_remove as $post_type_to_remove ) {
+      if( is_array( $in_search_post_types ) && in_array( $post_type_to_remove, $in_search_post_types ) ) {
+        unset( $in_search_post_types[ $post_type_to_remove ] );
+        $query->set( 'post_type', $in_search_post_types );
+      }
+    }
+  }
+
+}
+add_action( 'pre_get_posts', 'golden_oak_web_design_modify_search_query' );
 
 
 /*

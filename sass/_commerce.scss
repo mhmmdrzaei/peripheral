@@ -1,0 +1,96 @@
+
+@mixin fontSize($sizeValue){
+    font-size: $sizeValue * 1px;
+    font-size: ($sizeValue/10) * 1rem;
+}
+
+.wp-block-button.wc-block-components-product-button .wc-block-components-product-button__button, .wp-block-button a, .addToCartMember, .woocommerce button.button.alt {
+	border: 1px solid black;
+	border-radius: 0;
+	background: transparent;
+	color: black;
+	font-weight: 700; 
+
+
+}
+.woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover, .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt {
+	background-color: black;
+	color: white;
+}
+.wp-block-button__link:active, .wp-block-button__link:focus, .wp-block-button__link:hover, .wp-block-button__link:visited {
+	color: #26ff00;
+	border: 1px solid #26ff00;
+}
+.price {
+	color: black !important;
+	font-size: 2rem !important;
+	margin: 0;
+
+}
+
+.wc-block-grid__product-price__value {
+	font-size: .9rem !important;
+}
+.shopMain {
+	.woocommerce {
+		display: none;
+	}
+
+}
+.hasCountdown {
+	background-color: #26ff00 !important;
+	color: black !important;
+	border: 1px solid black !important;
+}
+.wc-block-components-product-title {
+	font-style: normal;
+	font-weight: 700 !important;
+	font-size: 1rem !important;
+}
+.wc-block-components-sort-select {
+font-size: .9rem !important;
+margin-bottom: 30px;
+}
+.wc-block-components-sort-select__select {
+	float: right;
+	border-left: 0;
+	border-right: 0;
+	// width: 50%;
+	min-width: 250px;
+	outline: none;
+
+}
+.woocommerce div.product .woocommerce-tabs .panel {
+	h2 {
+		display: none;
+	}
+}
+.auction-privatemsg-table {
+	width: 100%;
+	input {
+		border: 1px solid black;
+		border-right: 0;
+		border-radius: 0;
+		border-left: 0;
+		min-height: 30px;
+		margin-bottom: 5px;
+	}
+	textarea {
+				border: 1px solid black;
+		border-right: 0;
+		border-radius: 0;
+		border-left: 0;
+		min-height: 100px;
+
+	}
+}
+.addToCartMember {
+	padding: 10px 15px;
+	margin: 10px 0;
+	display: block;
+	width: fit-content;
+	max-width: 100px;
+}
+.wc-block-featured-product {
+	margin-bottom: 30px;
+}

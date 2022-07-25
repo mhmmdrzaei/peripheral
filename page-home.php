@@ -3,10 +3,36 @@
 <section class="pageSide">
     <main class="headerContainer">
   <?php get_sidebar(); ?>
-  <?php wp_list_categories_for_post_type('post'); ?>
+ 
 </main>
 </section>
 <section class="pageMain">
+  <section class="homepageSVG">
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       viewBox="0 0 2309.74 2654.88" style="enable-background:new 0 0 2309.74 2654.88;" xml:space="preserve">
+    <style type="text/css">
+      .st0{fill:none;stroke:#25FF00;stroke-width:5;stroke-miterlimit:10;}
+      .st1{fill:none;stroke:#000000;stroke-miterlimit:10;}
+      .st2{fill:#FFFFFF;}
+      .st3{fill:#FFFFFF;stroke:#25FF00;stroke-miterlimit:10;}
+      .st4{fill:none;stroke:#25FF00;stroke-width:7.702;stroke-miterlimit:10;}
+      .st5{fill:#25FF00;}
+      .st6{fill:none;stroke:#25FF00;stroke-width:10.989;stroke-miterlimit:10;}
+      .st7{fill:none;stroke:#25FF00;stroke-width:14;stroke-miterlimit:10;stroke-dasharray:29.885,29.885;}
+      .st8{fill:none;stroke:#25FF00;stroke-width:12;stroke-miterlimit:10;}
+      .st9{fill:none;stroke:#25FF00;stroke-width:8.569;stroke-miterlimit:10;}
+      .st10{fill:none;stroke:#25FF00;stroke-width:14;stroke-miterlimit:10;}
+      .st11{fill:none;stroke:#25FF00;stroke-width:14;stroke-miterlimit:10;stroke-dasharray:28.941,28.941;}
+    </style>
+    <g>
+      <path class="st0" d="M1133.9,460.1c-439.48,0-795.75,356.27-795.75,795.75s356.27,795.75,795.75,795.75
+        s795.75-356.27,795.75-795.75"/>
+      <g>
+        <polyline class="st0" points="1988.93,1315.13 1929.65,1255.85 1870.37,1315.13     "/>
+      </g>
+    </g>
+    </svg>
+  </section>
   
    <?php $args = array( 'post_type' => 'post', 
             // 'meta_key'      => 'start_date',
@@ -33,15 +59,18 @@
             <figure class="sideImagePosts" aria-label="Article image">
               <?php the_post_thumbnail('large');?>
             </figure>
+          </a>
              <h1 class="entry-title" aria-label="Article title">
-            <?php the_title(); ?>
+             <a href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr(the_title_attribute()); ?>" rel="bookmark">
+               <?php the_title(); ?>
+              </a>
               </h1>
               <?php
               $author_post = get_field('author');
               if( $author_post ): ?>
-                  <h2>By <?php echo esc_html( $author_post->post_title ); ?></h2>
+                  <h2> <a href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr(the_title_attribute()); ?>" rel="bookmark">By <?php echo esc_html( $author_post->post_title ); ?></a></h2>
               <?php endif; ?>
-          </a>
+          
       
 
 

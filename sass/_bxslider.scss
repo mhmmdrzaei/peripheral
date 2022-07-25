@@ -1,0 +1,78 @@
+@mixin fontSize($sizeValue){
+    font-size: $sizeValue * 1px;
+    font-size: ($sizeValue/10) * 1rem;
+}
+
+.bx-wrapper img {
+    margin: 0 auto;
+   	// max-width: 650px !important;
+    max-height: 78vh !important;
+}
+video {
+  // display: block;
+  margin: 0px auto;
+  cursor: pointer;
+  min-height: 250px;
+  width: 100%;
+  outline: none;
+
+}
+button.play {
+	height: 0px;
+	position: relative;
+	top:-3em;
+	background: transparent;
+	border: none;
+}
+.play:after {
+	content: "▶";
+	@include fontSize(15);
+
+
+}
+.playing:after {
+	content:"| |";
+	font-weight: 900;
+    @include fontSize(12);
+}
+
+.bx-wrapper .bx-prev {
+	left: -5px !important;
+}
+.bx-wrapper{
+	padding: 5px;
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+	width: 100%;
+	margin: 30px auto 0 !important;
+	// padding-bottom: 20px !important;
+}
+.bx-prev {
+	background: none !important;
+	// content:'←' !important;
+	// cursor: w-resize !important;
+}
+.bx-next {
+	background: none !important;
+	// content:'←' !important;
+	// cursor: e-resize !important;
+}
+.bx-default-pager {
+	padding: 0 !important;
+	// position: inherit !important;
+	// display: none !important;
+}
+.bx-controls-direction {
+	display: flex !important;
+	justify-content: space-between;
+}
+
+.bx-wrapper .bx-controls-direction a {
+	// position: inherit !important;
+	@include fontSize(15);
+	text-decoration: none;
+	padding: 16px 10px;
+	text-indent: 0 !important;
+
+}

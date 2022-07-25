@@ -1,5 +1,10 @@
 <footer>
 <main class="footerContainer">
+   <section class="cartnew">
+     <a class="cart-customlocation" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>"> <img src="<?php bloginfo('template_directory'); ?>/images/cart.png" alt="Image of a Shopping Cart">Cart (<?php echo WC()->cart->get_cart_contents_count() ?>)
+       </a>
+
+   </section>
   
   <section class="social_media_links" aria-label="Social Medial Links">
     <?php if( have_rows('social_media_links' , 'options') ): ?>

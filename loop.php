@@ -25,10 +25,13 @@
 	      </figure>
 	      <section class="archivePostDetails">
 	      	<section class="postDetails">
-	      		 <h3 class="entry-title" aria-label="Article title">
-	      		<?php the_title(); ?>
-	      		  </h3>
-	      		  <?php the_date(); ?>
+	      		<section class="titleDate">
+	      			 <h3 class="entry-title" aria-label="Article title">
+	      			<?php the_title(); ?>
+	      			  </h3>
+	      			  <?php the_date(); ?>
+	      		</section>
+
 	      		  <?php the_category(); ?>
 	      		  <?php
 	      		  $author_post = get_field('author');
