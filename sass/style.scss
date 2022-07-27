@@ -13,6 +13,7 @@
 @import 'commerce';
 @import 'bxslider';
 @import 'footer';
+@import "hamburger";
 /*
 ====================================
 Default Styling
@@ -132,6 +133,7 @@ nav {
 .logo {
     left: -10px;
     position: relative;
+
 }
 .menu-item-3774 {
 	position: fixed!important;
@@ -507,6 +509,7 @@ footer {
 			@include fontSize(20);
 			margin: 0;
 			font-weight: 400;
+			margin-bottom: 20px;
 		}
 	}
 }
@@ -738,5 +741,277 @@ footer {
 		}
 	}
 }
+//media quaries
 
+@media(max-width: 1065px){ 
+	main .pageMain {
+		width: 70%;
+	}
+
+
+}
+@media(max-width: 910px){ 
+	main .pageMain {
+		width: 67%;
+	}
+	.donation, .support {
+		width: 100%;
+	}
+
+}
+@media(max-width: 810px){ 
+	h1 {
+		@include fontSize(18);
+		margin: 0;
+	}
+
+	h2 {
+		@include fontSize(18);
+		font-style: italic;
+		font-weight: 500;
+		margin: 0;
+	}
+
+	main .pageMain {
+		width: 65%;
+	}
+
+	.donation h2, .support h2 {
+		width: 30%;
+	}
+	.support .supportContent, .donation .donationwidget {
+		width: 55%;
+	}
+
+	.homepagePost {
+		position: inherit;
+		cursor: pointer;
+		margin-bottom: 30px;
+		
+
+		  a {
+		  	cursor: pointer;
+		  	pointer-events: auto;
+		  }
+
+		figure {
+			max-width: 100%;
+			
+			img {
+				max-height: 100%;
+				width: auto;
+				height: 100%;
+				filter: blur(0px);
+			}
+		}
+		h1, h2 {
+			border-left: 10px solid #26ff00;
+			display: block;
+			width: fit-content;
+			// max-width: 450px;
+			// position: relative;
+			// bottom: 200px;
+			// left: 10px;
+			// margin-bottom: -200px;
+
+
+			a {
+				background:#26ff00;
+
+			}
+		}
+		h2 {
+			border-top: 0;
+		
+
+		}
+	}
+
+
+}
+@media(max-width: 750px){
+	main {
+		.pageSide, .pageMain{
+			width: 95%;
+			margin: 0 auto;
+			max-width: 95%;
+		}
+	}
+	.headerContainer {
+		position: inherit;
+		height: 160px;
+
+	}
+
+	.logo {
+
+		position: absolute;
+		width: 50%;
+		max-width: 150px;
+		left: -10px;
+		top: 20px;
+		z-index: 12;
+
+	}
+	.headerContainerMobile {
+		background: white;
+		width: 100%;
+		height: 100vh;
+		position: fixed;
+		left: 0;
+		padding: 0 5%;
+		z-index: 13;
+		.logo {
+			left: 2%;
+		}
+	}
+	#hamburger {
+		display: block;
+	}
+	.cartnew {
+		top: 60px;
+		right: 3.5%;
+		height: 33px;
+	}
+	.social_media_links,.footerMen,.mainMenu,.searchField,.categories {
+		display: none;
+
+	}
+	.mainMenu  {
+		position: absolute;
+		    /* max-width: 300px; */
+		    top: 140px;
+		    /* text-align: center; */
+		    width: 100%;
+		    @include fontSize(12);
+	}
+	.searchField {
+		position: absolute;
+		    top: 40vh;
+		    @include fontSize(12);
+	}
+	.open {
+		display: block;
+	}
+	.categories {
+		position: absolute;
+		top: 45vh;
+		@include fontSize(12);
+
+	}
+	.linksEach {
+		margin: 0 5%;
+		@include fontSize(12);
+		width: 70px;
+	}
+	.footerMen {
+		@include fontSize(12);
+		border-top: 0;
+		margin: 10px 5% 0;
+		p {
+			display: none;
+		}
+	}
+	footer {
+		 bottom: 25px;
+	}
+
+	//postmain
+	.postMain {
+		display: block;
+		figure,.postcontent {
+			width: 95%;
+			margin: 0 auto;
+		}
+	}
+	.archivepagePost {
+		display: block;
+		width: 100%;
+		.sideImagePosts {
+			width: 95%;
+			margin: 0 auto;
+		}
+		.archivePostDetails {
+			width: 95%;
+			margin: 10px auto 0;
+
+		}
+	}
+
+	//events 
+	.eventPagePost {
+		width: 100%;
+	}
+	.postMain .postMainSide {
+		width: 95%;
+		margin: 0 auto;
+	}
+
+	//authors 
+	.articlesListed {
+		display: block;
+		 .issueContributed, .fromTheArchives, {
+			width: 95%;
+			margin: 0 auto;
+		}
+	}
+
+	//shop 
+	#menu-commerce-menu {
+		width: 100%;
+	}
+	.membershipPagecontent {
+		display: block;
+		h2, .membershipOptions {
+			width: 95%;
+			margin: 0 auto;
+		}
+	}
+	.donation, .support {
+		display: block;
+		h2, .supportContent, .donationwidget {
+			width: 95%;
+			margin: 0 auto;
+		}
+	}
+
+	.bodyOveflow {
+		overflow: hidden;
+	}
+	//svgs 
+	.homepageSVG {
+		width: 100%;
+		left: 0;
+		top: 31vh;
+	}
+	.svgBGAbout {
+		width: 30%;
+		left: 70%;
+		top: 45%;
+	}
+	.svgEvents {
+		width: 50%;
+		left: 50%;
+	}
+	.svgBGauthors {
+		width: 100%;
+		left: 0;
+		top: 40%;
+	}
+	.svgBGauthorsSingle {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 65vh;
+	}
+	.svgmembership {
+	    width: 60%;
+	    left: 15%;
+	    bottom: 37vh;
+	}
+	.svgBGDonate {
+		width: 100%;
+		left: -2%;
+	}
+ }
 
