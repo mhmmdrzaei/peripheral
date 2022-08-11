@@ -10,7 +10,7 @@
   <section class="pageMain">
      <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
      <section class="postMain">
-       <figure>
+       <figure class="imgSide">
          <?php  the_post_thumbnail('large');?>
        </figure>
        <section class="postcontent">

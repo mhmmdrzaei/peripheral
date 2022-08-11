@@ -238,7 +238,7 @@ add_action( 'pre_get_posts', 'golden_oak_web_design_modify_search_query' );
  * Sets the post excerpt length to 40 characters.
  */
 function project_excerpt_length( $length ) {
-	return 100;
+	return 150;
 }
 add_filter( 'excerpt_length', 'project_excerpt_length' );
 
@@ -246,7 +246,7 @@ add_filter( 'excerpt_length', 'project_excerpt_length' );
  * Returns a "Continue Reading" link for excerpts
  */
 function project_continue_reading_link() {
-	return ' <a href="'. get_permalink() . '">Continue reading <span class="meta-nav">&rarr;</span></a>';
+	return ' <br><br><a href="'. get_permalink() . '">Continue reading <span class="meta-nav">&rarr;</span></a>';
 }
 
 /**

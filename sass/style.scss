@@ -248,6 +248,46 @@ footer {
 	list-style: none;
 	padding: 0;
 }
+.mailingList {
+	position: fixed;
+	top: 30%;
+	background: white;
+	padding: 20px;
+	border: 1px solid black;
+	min-width: 300px;
+	width: 80%;
+	left: 15%;
+	text-transform: capitalize;
+	label {
+		display: none;
+	}
+	input {
+		border: 1px solid black;
+		border-radius: none;
+		margin: 5px auto;
+		width: 100%;
+		padding: 5px;
+	}
+	.button {
+		max-width: 120px;
+		background: black;
+		color: white;
+		text-transform: uppercase;
+	}
+	h2 {
+		@include fontSize(15);
+		padding-bottom: 10px;
+	}
+	.close {
+		text-transform: uppercase;
+		float: right;
+		margin-bottom: 30px;
+		cursor: pointer;
+	}
+}
+.closed {
+	display: none;
+}
 //events 
 .eventsMain {
 	@extend .flex;
@@ -270,7 +310,7 @@ footer {
 .postMain {
 	@extend .flex;
 	justify-content: space-between;
-	.postMainSide,figure {
+	.postMainSide, .imgSide {
 		width: 43%;
 		h2 {
 			font-weight: 700;
@@ -915,7 +955,10 @@ footer {
 	footer {
 		 bottom: 25px;
 	}
-
+	.mailingList {
+		left: 0;
+		width: 100%;
+	}
 	//postmain
 	.postMain {
 		display: block;
