@@ -59,6 +59,12 @@ add_action( 'wp_enqueue_scripts', 'project_styles');
 We'll let WordPress add them to our templates automatically instead
 of writing our own script tags in the header and footer. */
 
+// google maps api
+function my_acf_init() {
+    acf_update_setting('google_api_key', 'AIzaSyBzhl9c_fsPimCSpzBxkISfpuhaWFiAb2I');
+}
+add_action('acf/init', 'my_acf_init');
+
 function project_scripts() {
 
 	//Don't use WordPress' local copy of jquery, load our own version from a CDN instead
@@ -74,7 +80,7 @@ wp_enqueue_script(
 
   wp_enqueue_script(
   	'googleMaps',
-  	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://maps.googleapis.com/maps/api/js?key=AIzaSyDo1P0E6Ef5SbffIx7ZzEGYjj-pNKGuHJY",
+  	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://maps.googleapis.com/maps/api/js?key=AIzaSyBzhl9c_fsPimCSpzBxkISfpuhaWFiAb2I",
   	false, //dependencies
   	null, //version number
   	true //load in footer
@@ -131,11 +137,7 @@ function woo_show_excerpt_shop_page() {
 }
 add_filter('add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment');
 
-// google maps api
-function my_acf_init() {
-    acf_update_setting('google_api_key', 'AIzaSyDo1P0E6Ef5SbffIx7ZzEGYjj-pNKGuHJY');
-}
-add_action('acf/init', 'my_acf_init');
+
 
 //custom categories
 

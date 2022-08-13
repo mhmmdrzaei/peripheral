@@ -88,6 +88,7 @@ main {
 .headerContainer {
 	display: block;
 	position: fixed;
+	max-width: 180px;
 }
 .footerContainer {
 	width: 100%;
@@ -291,6 +292,7 @@ footer {
 //events 
 .eventsMain {
 	@extend .flex;
+	justify-content: space-between;
 }
 .eventPagePost {
 	width: 48%;
@@ -790,6 +792,7 @@ footer {
 
 
 }
+
 @media(max-width: 910px){ 
 	main .pageMain {
 		width: 67%;
@@ -880,6 +883,7 @@ footer {
 	.headerContainer {
 		position: inherit;
 		height: 160px;
+		max-width: 100%;
 
 	}
 
@@ -1057,4 +1061,15 @@ footer {
 		left: -2%;
 	}
  }
+ @media(max-height: 700px){ 
+	.searchField {
+	    top: 45vh;
+
+	}
+	.categories {
+		top: 49vh;
+	}
+
+
+}
 
