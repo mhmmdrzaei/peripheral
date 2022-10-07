@@ -311,7 +311,14 @@ footer {
 }
 .postMain {
 	@extend .flex;
+
 	justify-content: space-between;
+	position: relative;
+	.imgSide {
+		position: sticky;
+		top: 30px;
+		height: fit-content;
+	}
 	.postMainSide, .imgSide {
 		width: 43%;
 		h2 {
@@ -966,9 +973,11 @@ footer {
 	//postmain
 	.postMain {
 		display: block;
-		figure,.postcontent {
+		.imgSide,.postcontent {
 			width: 95%;
 			margin: 0 auto;
+			position: inherit;
+			top: 0;
 		}
 	}
 	.archivepagePost {

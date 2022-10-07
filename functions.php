@@ -59,11 +59,7 @@ add_action( 'wp_enqueue_scripts', 'project_styles');
 We'll let WordPress add them to our templates automatically instead
 of writing our own script tags in the header and footer. */
 
-// google maps api
-function my_acf_init() {
-    acf_update_setting('google_api_key', 'AIzaSyBzhl9c_fsPimCSpzBxkISfpuhaWFiAb2I');
-}
-add_action('acf/init', 'my_acf_init');
+
 
 function project_scripts() {
 
@@ -126,6 +122,12 @@ wp_enqueue_script(
 
 
 }
+
+// google maps api
+function my_acf_init() {
+    acf_update_setting('google_api_key', 'AIzaSyBzhl9c_fsPimCSpzBxkISfpuhaWFiAb2I');
+}
+add_action('acf/init', 'my_acf_init');
 
 add_action( 'wp_enqueue_scripts', 'project_scripts');
 
