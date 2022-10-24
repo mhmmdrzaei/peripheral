@@ -1,5 +1,9 @@
   <?php get_header(); ?>
+  <?php $today = current_time('Ymd'); ?>
 <main>
+
+
+
   <section class="pageSide">
       <main class="headerContainer">
     <?php get_sidebar(); ?>
@@ -8,6 +12,33 @@
   </section>
 
   <section class="pageMain">
+
+       <?php if( have_rows('full_width_ad', 'options' ) ): ?>
+        <section class="fullwidthAd" id="ad">
+           <?php while( have_rows('full_width_ad', 'options') ): the_row();?>
+            
+            <?php 
+             $datetill = get_sub_field('event_date_start');
+             $rand_row = array_rand($rows, 1); // ge
+             if( $datetill < $today  ): 
+             $image = get_sub_field('full_width_ad_image');
+             $imageURL = $image['sizes']['large'];
+
+             $imageMarkup = '<img class="" src="'.$image['sizes']['large'].'" alt="'.$image['alt'].'" />';  
+             echo $imageMarkup;
+               ?>
+
+            
+
+
+
+             <?php endif; ?> 
+            
+
+         <?php endwhile; ?>
+         </section>
+       <?php endif; ?>
+     
      <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
      <section class="postMain">
        <figure class="imgSide">
