@@ -1,7 +1,7 @@
 
 @mixin fontSize($sizeValue){
     font-size: $sizeValue * 1px;
-    font-size: ($sizeValue/10) * 1rem;
+    font-size: calc($sizeValue / 10) * 1rem;
 }
 
 .wp-block-button.wc-block-components-product-button .wc-block-components-product-button__button, .wp-block-button a, .addToCartMember, .woocommerce button.button.alt {

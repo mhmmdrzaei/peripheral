@@ -1,0 +1,19 @@
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.fullwidthAd {
+	margin-bottom: 15px;
+	display: none;
+	animation: fadeIn 5s;
+	figure img {
+		width: 100%;
+	}
+}
+.page_side_ad {
+	display: none;
+	animation: fadeIn 5s;
+	position: fixed;
+	margin-top: 50px;
+	margin-left: 2%;
+}

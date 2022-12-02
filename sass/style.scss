@@ -14,6 +14,7 @@
 @import 'bxslider';
 @import 'footer';
 @import "hamburger";
+@import 'adstyles';
 /*
 ====================================
 Default Styling
@@ -26,7 +27,7 @@ img {
 }
 @mixin fontSize($sizeValue){
     font-size: $sizeValue * 1px;
-    font-size: ($sizeValue/10) * 1rem;
+    font-size: calc($sizeValue / 10) * 1rem;
 }
 
 
@@ -314,9 +315,9 @@ footer {
 
 	justify-content: space-between;
 	position: relative;
-	.imgSide {
-		position: sticky;
-		top: 30px;
+	.imgSide .imgSideInner {
+		// position: sticky;
+		// top: 30px;
 		height: fit-content;
 	}
 	.postMainSide, .imgSide {
@@ -1068,6 +1069,25 @@ footer {
 	.svgBGDonate {
 		width: 100%;
 		left: -2%;
+	}
+	//ads 
+	.fullwidthAd {
+		margin-bottom: 15px;
+		display: none;
+		animation: fadeIn 5s;
+		figure img {
+			width: 100%;
+		}
+	}
+	.page_side_ad {
+		display: none;
+		position: inherit;
+		margin-top: 15px;
+		margin-left: 0;
+		margin-bottom: 15px;
+		figure img {
+			width: 100%;
+		}
 	}
  }
  @media(max-height: 700px){ 

@@ -1,5 +1,4 @@
   <?php get_header(); ?>
-  <?php $today = current_time('Ymd'); ?>
 <main>
 
 
@@ -13,37 +12,43 @@
 
   <section class="pageMain">
 
-       <?php if( have_rows('full_width_ad', 'options' ) ): ?>
-        <section class="fullwidthAd" id="ad">
-           <?php while( have_rows('full_width_ad', 'options') ): the_row();?>
-            
-            <?php 
-             $datetill = get_sub_field('event_date_start');
-             $rand_row = array_rand($rows, 1); // ge
-             if( $datetill < $today  ): 
-             $image = get_sub_field('full_width_ad_image');
-             $imageURL = $image['sizes']['large'];
+      <section class="fullwidthAd" id="ad">
 
-             $imageMarkup = '<img class="" src="'.$image['sizes']['large'].'" alt="'.$image['alt'].'" />';  
-             echo $imageMarkup;
-               ?>
+        <?php $cars = get_field( 'full_width_ad','options' ); 
 
-            
+         if( is_array( $cars )) { ?>
 
+           <?php $car = array_rand( $cars );  ?>
+           <figure>
+             <a href="<?php echo$cars[$car]['links_to_full'] ?>" target="_blank"><img src="<?php echo $cars[$car]['full_width_ad_image'];?>" alt="advertisement"></a>
+           </figure>
 
+         <?php } ?>
 
-             <?php endif; ?> 
-            
-
-         <?php endwhile; ?>
-         </section>
-       <?php endif; ?>
+      </section>
      
      <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
      <section class="postMain">
-       <figure class="imgSide">
-         <?php  the_post_thumbnail('large');?>
-       </figure>
+      <section class="imgSide">
+        <figure class="imgSideInner">
+          <?php  the_post_thumbnail('large');?>
+        </figure>
+        <section class="page_side_ad " id="ad">
+
+          <?php $cars = get_field( 'page_side_ad','options' ); 
+           if( is_array( $cars )) { ?>
+             <?php $car = array_rand( $cars ); ?>
+              <figure>
+               <a href="<?php echo$cars[$car]['links_to_side'] ?>" target="_blank"><img src="<?php echo $cars[$car]['page_side_ad_image'];?>" alt="advertisement"></a>
+              </figure>
+            
+           <?php } ?>
+
+        </section>
+
+      </section>
+
+       
        <section class="postcontent">
           <section class="postDetails">
             <section class="titleDate">
@@ -60,9 +65,24 @@
                   <p>By <?php echo esc_html( $author_post->post_title ); ?></p>
               <?php endif; ?>
           </section>
-         <section class="postContentText">
+
+          <section class="fullwidthAd" id="ad">
+
+            <?php $cars = get_field( 'half_width_site_banner_ad','options' ); 
+             $datetill = get_sub_field('date_running_till');
+             $today = current_time('Ymd');
+             if( is_array( $cars ) && ($datetill < $today)) { ?>
+               <?php $car = array_rand( $cars ); ?>
+               <figure>
+                <a href="<?php echo$cars[$car]['links_to_half'] ?>" target="_blank"><img src="<?php echo $cars[$car]['half_width_ad_image'];?>" alt="advertisement"></a>
+               </figure>
+             <?php } ?>
+
+          </section>
+
+          <section class="postContentText">
            <?php the_content(); ?>
-         </section>
+          </section>
        </section>
      </section>
        <div id="nav-below" class="navigation">
