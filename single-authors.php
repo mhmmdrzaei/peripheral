@@ -70,7 +70,7 @@
             $archivePost = get_sub_field('connect_to_articles');
             if( $archivePost ): ?>
 
-            <a href="<?php echo the_permalink( $archivePost->ID ); ?>"><?php echo esc_html( $archivePost->post_title ); ?></a>
+            <a href="<?php echo the_permalink( $archivePost->ID ); ?>"><?php echo( $archivePost->post_title ); ?></a>
                 
             <?php endif; ?>
           <?php endwhile; ?>

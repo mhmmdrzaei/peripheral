@@ -34,6 +34,10 @@
     </main>
     </section>
     <section class="pageMain authorsMain">
+    <section class="contributors">
+          <h2>Contributors:</h2>
+        </section>
+    <section class="contributorsContainer">
       
        <?php $args = array( 'post_type' => 'authors', 
                 // 'meta_key'      => 'start_date',
@@ -51,15 +55,13 @@
       <?php // if there are posts, Start the Loop. ?>
 
       <?php while ( have_posts() ) : the_post(); ?>
-        <section class="contributors">
-          <h2>Contributors:</h2>
-        </section>
-        <section class="contributorsContainer">
+       
+       
                     <a href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr(the_title_attribute()); ?>" rel="bookmark">
                    <h3 class="entry-title" aria-label="Event title"><?php the_title(); ?></h3>
                 
               </a>    
-        </section>
+       
 
 
            
@@ -67,6 +69,8 @@
 
 
       <?php endwhile; // End the loop. Whew. ?>
+
+      </section>
 
         
          <?php wp_reset_query();?> 

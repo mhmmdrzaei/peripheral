@@ -12,20 +12,22 @@
 
   <section class="pageMain">
 
-      <section class="fullwidthAd" id="ad">
+      
 
         <?php $cars = get_field( 'full_width_ad','options' ); 
 
          if( is_array( $cars )) { ?>
 
            <?php $car = array_rand( $cars );  ?>
-           <figure>
+           <section class="fullwidthAd" id="ad">
+            <figure>
              <a href="<?php echo$cars[$car]['links_to_full'] ?>" target="_blank"><img src="<?php echo $cars[$car]['full_width_ad_image'];?>" alt="advertisement"></a>
-           </figure>
+            </figure>
+          </section>
 
          <?php } ?>
 
-      </section>
+      
      
      <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
      <section class="postMain">
@@ -33,18 +35,20 @@
         <figure class="imgSideInner">
           <?php  the_post_thumbnail('large');?>
         </figure>
-        <section class="page_side_ad " id="ad">
+        
 
           <?php $cars = get_field( 'page_side_ad','options' ); 
            if( is_array( $cars )) { ?>
+           <section class="page_side_ad " id="ad">
              <?php $car = array_rand( $cars ); ?>
               <figure>
                <a href="<?php echo$cars[$car]['links_to_side'] ?>" target="_blank"><img src="<?php echo $cars[$car]['page_side_ad_image'];?>" alt="advertisement"></a>
               </figure>
+            </section>
             
            <?php } ?>
 
-        </section>
+        
 
       </section>
 
@@ -66,19 +70,21 @@
               <?php endif; ?>
           </section>
 
-          <section class="fullwidthAd" id="ad">
+          
 
             <?php $cars = get_field( 'half_width_site_banner_ad','options' ); 
              $datetill = get_sub_field('date_running_till');
              $today = current_time('Ymd');
-             if( is_array( $cars ) && ($datetill < $today)) { ?>
+             if( is_array( $cars ) ) { ?>
+             <section class="fullwidthAd" id="ad">
                <?php $car = array_rand( $cars ); ?>
                <figure>
                 <a href="<?php echo$cars[$car]['links_to_half'] ?>" target="_blank"><img src="<?php echo $cars[$car]['half_width_ad_image'];?>" alt="advertisement"></a>
                </figure>
+              </section>
              <?php } ?>
 
-          </section>
+          
 
           <section class="postContentText">
            <?php the_content(); ?>

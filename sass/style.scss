@@ -369,6 +369,7 @@ footer {
 			}
 			p {
 				width: 100%;
+				text-align: center;
 			}
 		}
 		
@@ -433,6 +434,7 @@ footer {
 			}
 			p {
 				width: 100%;
+				text-align: center;
 			}
 		}
 	}
@@ -473,7 +475,7 @@ footer {
 	z-index: -1;
 	width: 60%;
 	left: 30%;
-	top: 65vh;
+	top: 320px;
 }
 .svgEvents {
 	position: fixed;
@@ -540,8 +542,6 @@ footer {
 //authors
 .authorsMain {
 	@extend .flex;
-	// max-width: 500px;
-	align-items: center;
 	.contributors {
 		margin-right: 50px;
 		h2 {
