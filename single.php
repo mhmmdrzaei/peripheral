@@ -65,9 +65,22 @@
               <?php the_category(); ?>
               <?php
               $author_post = get_field('author');
-              if( $author_post ): ?>
-                  <p>By <?php echo esc_html( $author_post->post_title ); ?></p>
-              <?php endif; ?>
+              if( $author_post ):
+                  $author_count = count($author_post);
+                  if($author_count > 1) {
+                      $author_list = "";
+                      foreach( $author_post as $featured_post ): 
+                          $title = get_the_title( $featured_post->ID );
+                          $author_list .= esc_html( $title ) . " & ";
+                      endforeach;
+                      $author_list = rtrim($author_list, " & ");
+                      echo '<p> By '. $author_list .'</p>';
+                  } else {
+                      $featured_post = $author_post[0];
+                      echo '<p> By ' . esc_html(get_the_title( $featured_post->ID )) . '</p>';
+                  }
+              endif;
+              ?>
           </section>
 
           

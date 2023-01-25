@@ -67,9 +67,22 @@
               </h1>
               <?php
               $author_post = get_field('author');
-              if( $author_post ): ?>
-                  <h2> By <?php echo esc_html( $author_post->post_title ); ?></h2>
-              <?php endif; ?>
+              if( $author_post ):
+                  $author_count = count($author_post);
+                  if($author_count > 1) {
+                      $author_list = "";
+                      foreach( $author_post as $featured_post ): 
+                          $title = get_the_title( $featured_post->ID );
+                          $author_list .= esc_html( $title ) . " & ";
+                      endforeach;
+                      $author_list = rtrim($author_list, " & ");
+                      echo '<h2> By '. $author_list .'</h2>';
+                  } else {
+                      $featured_post = $author_post[0];
+                      echo '<h2> By ' . esc_html(get_the_title( $featured_post->ID )) . '</h2>';
+                  }
+              endif;
+              ?>
 
             </a>
           </section>
