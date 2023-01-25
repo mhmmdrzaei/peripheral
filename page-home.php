@@ -60,16 +60,21 @@
               <?php the_post_thumbnail('large');?>
             </figure>
           </a>
-             <h1 class="entry-title" aria-label="Article title">
-             <a href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr(the_title_attribute()); ?>" rel="bookmark">
-               <?php the_title(); ?>
-              </a>
+          <section class="entry-title">
+            <a href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr(the_title_attribute()); ?>" rel="bookmark">
+              <h1 aria-label="Article title">
+              <?php the_title(); ?>
               </h1>
               <?php
               $author_post = get_field('author');
               if( $author_post ): ?>
-                  <h2> <a href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr(the_title_attribute()); ?>" rel="bookmark">By <?php echo esc_html( $author_post->post_title ); ?></a></h2>
+                  <h2> By <?php echo esc_html( $author_post->post_title ); ?></h2>
               <?php endif; ?>
+
+            </a>
+          </section>
+
+
           
       
 

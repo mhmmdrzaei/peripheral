@@ -129,9 +129,7 @@ nav {
 		}
 	}
 }
-#menu-header-menu {
 
-}
 .logo {
     left: -10px;
     position: relative;
@@ -344,10 +342,6 @@ footer {
 			@extend .flex;
 			justify-content: space-between;
 			align-items: flex-top;
-
-			a {
-				
-			}
 			.titleDate {
 				display: flex;
 				justify-content: space-between;
@@ -693,17 +687,14 @@ footer {
 			filter: blur(4px);
 		}
 	}
-	h1, h2 {
-		display: none;
-		
-		a {
-			
-
-		}
-	}
 	h2 {
+		padding-top: 10px;
 		border-top: 1px solid black;
-		width: fit-content;
+		display: none;
+	}
+	h1 {
+		display: none;
+		padding-bottom: 10px;
 
 	}
 }
@@ -777,19 +768,22 @@ footer {
 		filter: blur(0px);
 
 	}
-	h1, h2 {
-		border-left: 10px solid #26ff00;
-		display: block;
+	.entry-title {
 		width: 65%;
 		max-width: 450px;
 		position: fixed;
 		left: 23%;
 		bottom: 20vh;
-		a {
-			background:#26ff00;
 
+		h1, h2 {
+			border-left: 10px solid #26ff00;
+			display: block;background:#26ff00;
+			
+			
 		}
+
 	}
+
 }
 //media quaries
 
@@ -858,21 +852,12 @@ footer {
 		h1, h2 {
 			border-left: 10px solid #26ff00;
 			display: block;
-			width: fit-content;
-			// max-width: 450px;
-			// position: relative;
-			// bottom: 200px;
-			// left: 10px;
-			// margin-bottom: -200px;
-
-
-			a {
-				background:#26ff00;
-
-			}
+			// width: fit-content;
+			background:#26ff00;
+			padding: 10px 0;
 		}
 		h2 {
-			border-top: 0;
+			// border-top: 0;
 		
 
 		}
@@ -1007,7 +992,7 @@ footer {
 	//authors 
 	.articlesListed {
 		display: block;
-		 .issueContributed, .fromTheArchives, {
+		 .issueContributed, .fromTheArchives {
 			width: 95%;
 			margin: 0 auto;
 		}
