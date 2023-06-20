@@ -391,6 +391,83 @@ if( function_exists('acf_add_options_page') ) {
 	
 }
 
+function send_code_on_purchase($order_id) {
+    // Get the list of predetermined codes
+    $codes = array(
+// redacted
+	  );
+
+    // Get the customer's email address
+    $order = wc_get_order($order_id);
+    $customer_email = $order->get_billing_email();
+
+    // Check if the order contains the specific product(s) you want to apply this code assignment to
+    $target_product_ids = array(5385); // Replace with the product IDs or category IDs you want to target
+
+    $found = false;
+    foreach ($order->get_items() as $item) {
+        $product_id = $item->get_product_id();
+        $product = wc_get_product($product_id);
+
+        // Check if the product ID matches the target product IDs
+        if (in_array($product_id, $target_product_ids) || in_array($product->get_category_ids(), $target_product_ids)) {
+            $found = true;
+            break;
+        }
+    }
+
+    if (!$found) {
+        return; // If the purchased product(s) don't match, exit the function
+    }
+
+    // Assign a code to the customer and send an email
+    $assigned_codes = get_post_meta($order_id, 'assigned_codes', true);
+    if (empty($assigned_codes)) {
+        // Shuffle the list of codes to randomize their order
+        shuffle($codes);
+
+        // Get the next 100 codes from the randomized list
+        $assigned_codes = array_slice($codes, 0, 100);
+
+        // Update the order with the assigned codes
+        update_post_meta($order_id, 'assigned_codes', $assigned_codes);
+
+        // Send an email to the customer with their assigned code
+        $subject = 'Your purchased code';
+        $message = 'Thank you for your purchase. Your code is: ' . $assigned_codes[0];
+        wp_mail($customer_email, $subject, $message);
+    }
+}
+add_action('woocommerce_order_status_completed', 'send_code_on_purchase');
+
+
+
+add_action('woocommerce_order_status_processing', 'custom_update_order_status', 10, 2);
+function custom_update_order_status($order_id, $order)
+{
+    // Get the order object
+    $order = wc_get_order($order_id);
+
+    // Get the product ID for which you want to update the order status
+    $target_product_id = 5385; // Replace with your actual product ID
+
+    // Check if the order contains the target product
+    $has_target_product = false;
+    foreach ($order->get_items() as $item) {
+        if ($item->get_product_id() === $target_product_id) {
+            $has_target_product = true;
+            break;
+        }
+    }
+
+    // If the order contains the target product, update the order status to "Completed"
+    if ($has_target_product) {
+        $order->update_status('completed');
+    }
+}
+
+
+
 
 /* is_blog() - checks various conditionals to figure out if you are currently within a blog page */
 function is_blog () {

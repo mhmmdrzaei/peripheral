@@ -919,7 +919,7 @@ footer {
 	}
 	.searchField {
 		position: absolute;
-		    top: 40vh;
+		    top: 50vh;
 		    @include fontSize(12);
 	}
 	.open {
@@ -927,7 +927,7 @@ footer {
 	}
 	.categories {
 		position: absolute;
-		top: 45vh;
+		top: 53vh;
 		@include fontSize(12);
 
 	}
@@ -1072,13 +1072,13 @@ footer {
  }
  @media(max-height: 700px){ 
 	.searchField {
-	    top: 45vh;
+	    top: 56vh;
 
 	}
 	.categories {
-		top: 49vh;
+		top:59vh;
 	}
-
+ 
 
 }
 
