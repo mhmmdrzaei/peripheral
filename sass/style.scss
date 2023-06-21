@@ -929,6 +929,7 @@ footer {
 		position: absolute;
 		top: 53vh;
 		@include fontSize(12);
+		display: none;
 
 	}
 	.linksEach {
