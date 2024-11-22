@@ -43,7 +43,7 @@
        <h2>Contributor:</h2> <h3><?php the_title(); ?></h3>
      </section>
      <section class="authorBio">
-       <?php the_field('author_bio'); ?>
+       <?php echo get_field('author_bio'); ?>
      </section>
      <section class="articlesListed">
        <h3>Articles:</h3>

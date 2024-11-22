@@ -31,7 +31,7 @@
                 <?php if( have_rows('online_event_information' ) ): ?>
                     <?php while( have_rows('online_event_information') ): the_row(); ?>
 
-                    <a href="<?php the_sub_field('link_location'); ?>" target="_blank"><?php the_sub_field('link_label_location'); ?></a>
+                    <a href="<?php echo get_sub_field('link_location'); ?>" target="_blank"><?php the_sub_field('link_label_location'); ?></a>
 
                     
                   <?php endwhile; ?>
@@ -68,7 +68,7 @@
 
        <section class="postcontent">
         <section class="postContentDesc">
-          <?php the_field('event_description'); ?>
+          <?php echo get_field('event_description'); ?>
         </section>
         <section class="googleMap map" id="map"   aria-label="Google Map location">
           <?php 
